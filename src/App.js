@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import {BrowserRouter as Router,Route} from 'react-router-dom'
 import './App.css';
+import Navbar from './components/NavBar';
+import CreateItem from './Screen/CreateItem';
+import Dashboard from './Screen/Dashboard';
+import PartyLedger from './Screen/PartyLedger';
+import Payment from './Screen/Payment';
+import PaymentList from './Screen/PaymentList';
+import Purchase from './Screen/Purchase';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar/>
+      <br/>
+      <Route exact path="/" component={Dashboard}/>
+      <Route path="/CreateItem" component={CreateItem}/>
+      <Route path="/PartyLedger" component={PartyLedger} />
+      <Route path="/Payment" component={Payment}/>
+      <Route path="/PaymentlIst" component={PaymentList}/>
+      <Route path ="/Purchase" component={Purchase}/>
+      <Route/>
+    </Router>
   );
 }
 
