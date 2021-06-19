@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import './App.css';
-import Navbar from './components/NavBar';
+import Navbars from './components/NavBar';
 import CreateItem from './Screen/CreateItem';
 import Dashboard from './Screen/Dashboard';
 import PartyLedger from './Screen/PartyLedger';
@@ -14,7 +14,7 @@ import Purchase from './Screen/Purchase';
 function App() {
   return (
     <Router>
-      <Navbar/>
+      <Navbars/>
       <br/>
       <Route exact path="/" component={Dashboard}/>
       <Route path="/CreateItem" component={CreateItem}/>
