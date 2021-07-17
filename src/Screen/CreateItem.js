@@ -1,7 +1,35 @@
 import React ,{Component} from 'react';
+import axios from 'axios';
+
+import Table from 'react-bootstrap/Table'
+
+
 
 
 export default class CreateItem extends Component{
+
+  constructor(){
+    super();
+    this.state ={
+      Parties:[],
+      tableHeader : ["Party Name","Party Type","GST Number","Bank Name","Account Number","IFSC"]
+    }
+  }
+  componentDidMount(){
+    const url = 'https://webhooks.mongodb-realm.com/api/client/v2.0/app/test-voutl/service/test/incoming_webhook/GetAllParty'
+    axios.get(url)
+        .then(res => { 
+          console.log(res.data)
+          this.setState({
+            Parties:res
+          })
+          console.log(this.state.Parties.data)
+        }).catch(err => 
+          console.log(err)
+        )
+  }
+
+  
     render(){
         return(
             <div className="content-window">
@@ -35,18 +63,45 @@ export default class CreateItem extends Component{
 
                             <div className="col-lg-3">
                             <b><label><span className="mandatory"></span></label> </b>
-                              <button className="btn btn-success btn-sm mt-4" id="Report" type="submit" >Find Party</button>
+                              <button className="btn btn-success btn-sm " style={{marginTop:'2rem'}} id="Report" type="submit" >Find Party</button>
                             </div> 
-                          </div>  
-                         
+                          </div>   
                         </form>
                       </div>
+                      <Table responsive hover size="sm">
+                                    <thead>
+                                        <tr>
+                                            {this.state.tableHeader.map((head,index)=>{
+                                                return(<th key={index}>{head}</th>)
+                                            })}
+                                        </tr>
+                                    </thead>
+                                    {this.state.loading ? 
+                                    <tbody className="spinner-border text-primary errodesc-loading-spinner" role="status">
+                                        <tr className="sr-only"><td>Loading...</td></tr>
+                                    </tbody>:
+                                    (this.state.Parties.length === 0) ? <thead id="emptyTableText"><tr  className="text-muted text-center"><td>No Results Found</td></tr></thead> : 
+                                        <tbody>
+                                        {this.state.Parties.data.map( (item,index) => {
+                                        return ( 
+                                                <tr key={index}>
+                                                    <td>{(item.PartyName === null) ? "NULL" : item.PartyName}</td>
+                                                    <td>{(item.PartyType === null) ? "NULL" : item.PartyType}</td>
+                                                    <td>{(item.Registration === null) ? "NULL" :item.Registration}</td>
+                                                    <td>{(item.BankName === null) ? "NULL" :item.BankName}</td> 
+                                                    <td>{(item.AccountNumber === null) ? "NULL" :item.AccountNumber}</td> 
+                                                    <td>{(item.IFSC === null) ? "NULL" :item.IFSC}</td> 
+                                                </tr>
+                                            )  
+                                        })} 
+                                        </tbody> 
+                                    }
+                                </Table>
                     </div>
                   </div>
                 </div>
             </div>
             </div>
-          
         </div>
         );
     }

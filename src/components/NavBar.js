@@ -9,28 +9,6 @@ export default class Navbars extends Component{
 render(){
 
     return(
-        // <nav className="navbar navbar-dark bg-success navbar-expand-lg">
-        //     <a to="/" className="navbar-brand">ComAgent</a>
-        //     <div className="collpase navbar-collapse">
-        //         <ul className="navbar-nav mr-auto">
-        //             <li className="navbar-item">
-        //                 <a className="nav-link dropdown-toggle"  href="#"id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >Creation</a>
-        //                 <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-        //                 <li><a class="dropdown-item" href="#">Action</a></li>
-        //                 <li><a class="dropdown-item" href="#">Another action</a></li>
-        //                 <li><hr class="dropdown-divider"/></li>
-        //                 <li><a class="dropdown-item" href="#">Something else here</a></li>
-        //                 </ul>
-        //             </li>
-        //             <li className="navbar-item">
-        //                 <a to="/PartyLedger" className="nav-link">Transcation</a>
-        //             </li>
-        //             <li className="navbar-item">
-        //                 <a to="/Payment" className="nav-link">Ledger</a>
-        //             </li>
-        //         </ul>
-        //     </div>
-        // </nav>
         <Navbar className="navbar navbar-dark bg-success navbar-expand-lg">
         <Navbar.Brand href="/">ComAgent</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
