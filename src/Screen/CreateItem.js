@@ -12,6 +12,14 @@ export default class CreateItem extends Component {
     super();
     this.state = {
       Parties: [],
+      CustomerType:"",
+      CustomerName:"",
+      CustomerLocation:"",
+      CustomerRegisterNumber:"",
+      BankName:"",
+      AccountNumber:"",
+      BankBranch:"",
+      IFSC:"",
       tableHeader: ["Party Name", "Party Type", "GST Number", "Bank Name", "Account Number", "IFSC"]
     }
   }
@@ -29,7 +37,67 @@ export default class CreateItem extends Component {
       )
   }
 
+  onChangeCustomerType(e) {
+    // this.setState({
+    //   CustomerType: e.target.value
+    // })
+    console.log('PartyType :',e.target.value)
+  }
 
+
+  OnChangeCustomerName(e){
+    // this.setState({
+    //   CustomerName: e.target.value
+    // })
+    console.log('CustomerName :',e.target.value)
+  }
+
+
+  OnChangeCustomerLocation(e){
+    // this.setState({
+    //   CustomerName: e.target.value
+    // })
+    console.log('CustomerLocation :',e.target.value)
+  }
+
+  OnChangeCustomerRegisterNumber(e){
+    // this.setState({
+    //   CustomerRegisterType: e.target.value
+    // })
+    console.log('CustomerRegisterNumber:',e.target.value)
+  }
+
+  
+  OnChangeBankName(e){
+    // this.setState({
+    //   CustomerName: e.target.value
+    // })
+    console.log('BankName :',e.target.value)
+  }
+
+  
+  OnChangeAccountNumber(e){
+    // this.setState({
+    //   CustomerName: e.target.value
+    // })
+    console.log('AccountNumber :',e.target.value)
+  }
+
+  
+  OnChangeBankBranch(e){
+    // this.setState({
+    //   CustomerName: e.target.value
+    // })
+    console.log('BankBranch :',e.target.value)
+  }
+
+  
+  OnChangeIFSC(e){
+    // this.setState({
+    //   CustomerName: e.target.value
+    // })
+    console.log('IFSC :',e.target.value)
+  }
   render() {
 
     return (
@@ -43,14 +111,14 @@ export default class CreateItem extends Component {
             </div>
             <div className="row mx-auto">
               <div className="col-xl-12 pr-0 pl-0">
-                <div className="card m-b-30">
+                <div className="card">
                   <div className=" mx-3 row">
                     <form className='col-lg-12' id='Create Party' onSubmit={this.onSubmit}>
                       <div className="row  mt-3" >
                         <div className="col-lg-3">
-                          <b><label>Party Type <span className="mandatory">*</span></label></b>
-                          <select className=" form-control form-control-sm" required  >
-                            <option value="">Select Party Type</option>
+                          <b><label>Customer Type <span className="mandatory">*</span></label></b>
+                          <select className=" form-control form-control-sm" onChange={this.onChangeCustomerType} value={this.state.CustomerType} required  >
+                            <option value="">Select Customer Type</option>
                             <option value="BUYER">BUYER</option>
                             <option value="SELLER">SELLER</option>
                             <option value="TRANSPORTER">TRANSPORTER</option>
@@ -58,19 +126,19 @@ export default class CreateItem extends Component {
                         </div>
 
                         <div className="col-lg-3">
-                          <b><label>Party Name <span className="mandatory">*</span></label> </b>
+                          <b><label>Customer Name <span className="mandatory">*</span></label> </b>
                           <input className=" form-control form-control-sm" required />
                         </div>
 
                         <div className="col-lg-3">
-                          <button className="btn btn-success btn-sm " style={{ marginTop: '2rem' }} id="Report" type="submit" >Find Party</button>
-                          <button className="btn btn-success btn-sm mx-2" style={{ marginTop: '2rem' }} data-toggle="modal" data-target="#exampleModalCenter" >Add Party</button>
+                          <button className="btn btn-success btn-sm " style={{ marginTop: '2rem' }} id="Report" type="submit" >Find Customer</button>
+                          <button className="btn btn-success btn-sm mx-2" style={{ marginTop: '2rem' }} data-toggle="modal" data-target="#exampleModalCenter" >Add Customer</button>
                         </div>
 
                       </div>
                     </form>
-
-                    <table className="table table-striped my-5 ">
+                    
+                    <table className="table table-striped my-5  " >
                       <thead class="table-success sticky-top " style={{ textAlign: 'center' }}>
                         <tr>
                           {this.state.tableHeader.map((head, index) => {
@@ -83,7 +151,7 @@ export default class CreateItem extends Component {
                           <tr className="sr-only"><td>Loading...</td></tr>
                         </tbody> :
                         (this.state.Parties.length === 0) ? <thead id="emptyTableText"><tr className="text-muted text-center"><td>No Results Found</td></tr></thead> :
-                          <tbody style={{ textAlign: 'center' }}>
+                          <tbody className ="text-center">
                             {this.state.Parties.data.map((item, index) => {
                               return (
                                 <tr key={index}>
@@ -99,7 +167,7 @@ export default class CreateItem extends Component {
                           </tbody>
                       }
                     </table>
-
+                    
                   </div>
                 </div>
               </div>
@@ -121,8 +189,8 @@ export default class CreateItem extends Component {
                     <div className="row  mt-6" >
                       <div className="col-lg-6">
                         <b><label>Customer Type <span className="mandatory">*</span></label></b>
-                        <select className=" form-control form-control-sm" required  >
-                          <option value="">Select Party Type</option>
+                        <select className=" form-control form-control-sm" onChange={this.onChangeCustomerType} value={this.state.CustomerType} required >
+                          <option value="">Select Customer Type</option>
                           <option value="BUYER">BUYER</option>
                           <option value="SELLER">SELLER</option>
                           <option value="TRANSPORTER">TRANSPORTER</option>
@@ -136,32 +204,32 @@ export default class CreateItem extends Component {
 
                       <div className="col-lg-6 my-3">
                         <b><label>Customer Location <span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm" required />
+                        <input className=" form-control form-control-sm"  />
                       </div>
 
                       <div className="col-lg-6 my-3">
-                        <b><label>Customer Contact Number <span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm" required />
+                        <b><label>Customer Registration Number <span className="mandatory">*</span></label> </b>
+                        <input className=" form-control form-control-sm"  />
                       </div>
 
                       <div className="col-lg-6 my-3">
                         <b><label>Bank Name<span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm" required />
+                        <input className=" form-control form-control-sm"  />
                       </div>
 
                       <div className="col-lg-6 my-3">
                         <b><label>Bank Account Number<span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm" required />
+                        <input className=" form-control form-control-sm"  />
                       </div>
 
                       <div className="col-lg-6 my-2">
                         <b><label>Branch<span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm" required />
+                        <input className=" form-control form-control-sm"  />
                       </div>
 
                       <div className="col-lg-6 my-2">
                         <b><label>IFSC<span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm" required />
+                        <input className=" form-control form-control-sm"  />
                       </div>
 
                       <div className="col-lg-12 my-2">

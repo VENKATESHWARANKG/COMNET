@@ -1,5 +1,7 @@
-.table-fixed  tbody {
-    display: block;
-    height: 300px;
-    overflow-y: auto;
+.table {
+    
+}
+
+.card{
+    height: 400px;
 }
