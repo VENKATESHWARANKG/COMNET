@@ -24,7 +24,7 @@ export default class Purchase extends Component {
     }
   }
   componentDidMount() {
-    const url = 'https://webhooks.mongodb-realm.com/api/client/v2.0/app/test-voutl/service/test/incoming_webhook/GetAllParty'
+    const url = 'https://webhooks.mongodb-realm.com/api/client/v2.0/app/test-voutl/service/test/incoming_webhook/GetAllInvoice'
     axios.get(url)
       .then(res => {
         console.log(res.data)
@@ -165,11 +165,13 @@ export default class Purchase extends Component {
                             {this.state.Parties.data.map((item, index) => {
                               return (
                                 <tr key={index}>
-                                  <td>{(item.PartyName === null) ? "NULL" : item.PartyName}</td>
-                                  <td>{(item.PartyType === null) ? "NULL" : item.PartyType}</td>
-                                  <td>{(item.Registration === null) ? "NULL" : item.Registration}</td>
-                                  <td>{(item.BankName === null) ? "NULL" : item.BankName}</td>
-                                  <td>{(item.AccountNumber === null) ? "NULL" : item.AccountNumber}</td>
+                                  <td>{new Intl.DateTimeFormat("en-GB",{year:"numeric",month:"2-digit",day:'2-digit'}).format(item.InvoiceDate) === null
+                                  ? "NULL" :new Intl.DateTimeFormat("en-GB",{year:"numeric",month:"2-digit",day:'2-digit'}).format(item.InvoiceDate)}</td>
+                                  <td>{(item.SellerName  === null) ? "NULL" : item.SellerName }</td>
+                                  <td>{(item.BuyerName   === null) ? "NULL" : item.BuyerName  }</td>
+                                  <td>{(item.InvoiceNumber === null) ? "NULL" : item.InvoiceNumber}</td>
+                                  <td>{Number(item.InvoiceAmount === null) 
+                                  ? "NULL" :Number(item.InvoiceAmount)}</td>
                                   <td>{(item.IFSC === null) ? "NULL" : item.IFSC}</td>
                                   <td>{(item.Registration === null) ? "NULL" : item.Registration}</td>
                                 </tr>

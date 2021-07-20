@@ -10,7 +10,7 @@ render(){
 
     return(
         <Navbar className="navbar navbar-dark bg-success navbar-expand-lg">
-        <Navbar.Brand href="/">ComAgent</Navbar.Brand>
+        <Navbar.Brand href="/">TRACC</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
