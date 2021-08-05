@@ -20,7 +20,8 @@ export default class CreateItem extends Component {
       AccountNumber:"",
       BankBranch:"",
       IFSC:"",
-      tableHeader: ["Party Name", "Party Type", "GST Number", "Bank Name", "Account Number", "IFSC"]
+      tableHeader: ["Party Name", "Party Type", "GST Number", "Bank Name", "Account Number", "IFSC"],
+      loading : true
     }
   }
   componentDidMount() {
@@ -29,7 +30,8 @@ export default class CreateItem extends Component {
       .then(res => {
         console.log(res.data)
         this.setState({
-          Parties: res
+          Parties: res,
+          loading: false
         })
         console.log(this.state.Parties.data)
       }).catch(err =>
@@ -112,12 +114,12 @@ export default class CreateItem extends Component {
             <div className="row mx-auto">
               <div className="col-xl-12 pr-0 pl-0">
                 <div className="card">
-                  <div className=" mx-3 row">
+                  <div className=" mx-3 row justify-content-center">
                     <form className='col-lg-12' id='Create Party' onSubmit={this.onSubmit}>
                       <div className="row  mt-3" >
                         <div className="col-lg-3">
                           <b><label>Customer Type <span className="mandatory">*</span></label></b>
-                          <select className=" form-control form-control-sm" onChange={this.onChangeCustomerType} value={this.state.CustomerType} required  >
+                          <select className=" form-control form-control-sm" onChange={this.onChangeCustomerType}  required  >
                             <option value="">Select Customer Type</option>
                             <option value="BUYER">BUYER</option>
                             <option value="SELLER">SELLER</option>
@@ -131,14 +133,21 @@ export default class CreateItem extends Component {
                         </div>
 
                         <div className="col-lg-3">
-                          <button className="btn btn-success btn-sm " style={{ marginTop: '2rem' }} id="Report" type="submit" >Find Customer</button>
-                          <button className="btn btn-success btn-sm mx-2" style={{ marginTop: '2rem' }} data-toggle="modal" data-target="#exampleModalCenter" >Add Customer</button>
+                          <button className="btn btn-success btn-sm " style={{ marginTop: '2rem' }} id="Report" type="submit" ><i class="fas fa-search"></i></button>
+                          <button className="btn btn-success btn-sm mx-2" style={{ marginTop: '2rem' }} type ="button" data-toggle="modal" data-target="#exampleModalCenter" ><i class="fas fa-user-plus"></i></button>
                         </div>
 
                       </div>
                     </form>
-                    
+                   { this.state.loading == true ? 
+                   <div class="d-flex justify-content-center py-4">
+                   <div class="spinner-grow text-success" role="status">
+                     <span class="sr-only">Loading...</span>
+                   </div>
+                 </div>
+                   :
                     <table className="table table-striped my-5  " >
+                      
                       <thead class="table-success sticky-top " style={{ textAlign: 'center' }}>
                         <tr>
                           {this.state.tableHeader.map((head, index) => {
@@ -146,10 +155,7 @@ export default class CreateItem extends Component {
                           })}
                         </tr>
                       </thead>
-                      {this.state.loading ?
-                        <tbody className="spinner-border text-primary errodesc-loading-spinner" role="status">
-                          <tr className="sr-only"><td>Loading...</td></tr>
-                        </tbody> :
+                      {
                         (this.state.Parties.length === 0) ? <thead id="emptyTableText"><tr className="text-muted text-center"><td>No Results Found</td></tr></thead> :
                           <tbody className ="text-center">
                             {this.state.Parties.data.map((item, index) => {
@@ -161,13 +167,17 @@ export default class CreateItem extends Component {
                                   <td>{(item.BankName === null) ? "NULL" : item.BankName}</td>
                                   <td>{(item.AccountNumber === null) ? "NULL" : item.AccountNumber}</td>
                                   <td>{(item.IFSC === null) ? "NULL" : item.IFSC}</td>
+                                  {/* <td> 
+                                    <button className="btn  btn-outline-danger btn-sm  shadow-none" id="Report" type="submit" ><i class="fas fa-user-times info"></i></button>
+                                    <button className="btn btn-outline-danger btn-sm mx-2 " id="Report" type="submit" ><i class="fas fa-user-times"></i></button>
+                                  </td> */}
                                 </tr>
                               )
                             })}
                           </tbody>
                       }
                     </table>
-                    
+                    }
                   </div>
                 </div>
               </div>
