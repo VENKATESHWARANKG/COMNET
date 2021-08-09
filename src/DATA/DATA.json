@@ -1,0 +1,38 @@
+[
+    {
+      "VendorName": "APR",
+      "TotalBillAmount": 8171151.00,
+      "NumberOfBills": 232,
+      "color":  "rgb(102, 153, 153)"
+  
+    },
+    {
+      "VendorName": "MAY",
+      "TotalBillAmount": 7737069.00,
+      "NumberOfBills": 212,
+      "color":  "rgb(232, 114, 210)"
+  
+    },
+    {
+      "VendorName": "JUN",
+      "TotalBillAmount": 669368.00,
+      "NumberOfBills": 13,   
+      "color":  "rgb(102, 153, 153)"
+  
+  
+    },
+    {
+      "VendorName": "JUL",
+      "TotalBillAmount": 11418956.00,
+      "NumberOfBills": 180,    
+      "color":  "rgb(0, 51, 204)"
+  
+    },
+    {
+      "VendorName": "AUG",
+      "TotalBillAmount": 657146.00,
+      "NumberOfBills": 8,  
+      "color":  "rgb(26, 255, 163)"
+  
+    }
+  ]

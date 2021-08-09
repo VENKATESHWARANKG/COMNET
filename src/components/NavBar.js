@@ -30,7 +30,7 @@ render(){
     
     return (
       <>
-        <Button className="me-2" variant="success" onClick={() => handleShow(true)}>
+        <Button className="me-2" type="sumbit" variant="success" onClick={() => handleShow(true)}>
         <i class="fas fa-search"></i>
         </Button>
         <Modal animation="true"  show={show} centered="true" onHide={() => setShow(false)}  size="xl">
@@ -142,7 +142,7 @@ render(){
           </Nav>
           <Form inline>
             <div className="input-group mb-3">
-            <input type="text" placeholder="Search Invoice" ></input>
+            <input type="text" placeholder="Search Invoice" required></input>
             <div className="input-group-append">
              <Info/>
             </div>
