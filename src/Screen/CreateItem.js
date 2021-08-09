@@ -146,6 +146,7 @@ export default class CreateItem extends Component {
                    </div>
                  </div>
                    :
+                   <div class="col-md-6" style="line-height: 0.5">
                     <table className="table table-striped my-5  " >
                       
                       <thead class="table-success sticky-top " style={{ textAlign: 'center' }}>
@@ -177,6 +178,7 @@ export default class CreateItem extends Component {
                           </tbody>
                       }
                     </table>
+                  </div>
                     }
                   </div>
                 </div>

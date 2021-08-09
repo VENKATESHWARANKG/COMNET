@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { NavDropdown,Navbar,Nav,Button,Form,Modal,Table,Badge} from 'react-bootstrap';
+import { NavDropdown,Navbar,Nav,Button,Form,Modal,Table,FormControl} from 'react-bootstrap';
 import { useState } from 'react';
 //import {Link} from 'react-router-dom';
 
@@ -140,13 +140,15 @@ render(){
               <NavDropdown.Item href="#action/3.4">Transport Report</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form inline>
-            <div className="input-group mb-3">
-            <input type="text" placeholder="Search Invoice" required></input>
-            <div className="input-group-append">
-             <Info/>
-            </div>
-            </div>
+          <Form className="d-flex">
+            <FormControl
+              type="text"
+              placeholder="Search Invoice"
+              className="mr-2"
+              aria-label="Search"
+              required
+            />
+            <Info />
           </Form>
         </Navbar.Collapse>
 

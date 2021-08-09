@@ -100,6 +100,8 @@ export default class DashBoard extends Component{
                     <div class="w-50 my-4">
                  
                     <Doughnut
+                    width ={100}
+                    height={200}
                      data={amountdata}
                     options={{
                         title: {
