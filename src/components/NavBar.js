@@ -19,7 +19,7 @@ export default class Navbars extends Component{
  
 render(){
   function Info() {
-    const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
+   // const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
   

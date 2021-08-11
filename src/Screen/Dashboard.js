@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import {Bar, Line,Doughnut,Pie,horizontalBar} from 'react-chartjs-2';
+import {Bar, Line,Doughnut,Pie} from 'react-chartjs-2';
 import data from '../DATA/DATA.json'
 
 export default class DashBoard extends Component{

@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Table from 'react-bootstrap/Table'
-
-
-
-
 export default class Purchase extends Component {
 
   constructor() {
@@ -141,8 +136,8 @@ export default class Purchase extends Component {
                         </div>
 
                         <div className="col-lg-3">
-                          <button className="btn btn-success btn-sm " style={{ marginTop: '2rem' }} id="Report" type="submit" >Find Shipment</button>
-                          <button className="btn btn-success btn-sm mx-2" style={{ marginTop: '2rem' }} data-toggle="modal" data-target="#exampleModalCenter" >Add Shipment</button>
+                          <button className="btn btn-success btn-sm " style={{ marginTop: '2rem' }} id="Report" type="submit" ><i class="fas fa-search"></i></button>
+                          <button className="btn btn-success btn-sm mx-2" style={{ marginTop: '2rem' }} data-toggle="modal" data-target="#exampleModalCenter" ><i class="fas fa-cubes"></i> Add Shipment</button>
                         </div>
 
                       </div>
@@ -222,14 +217,29 @@ export default class Purchase extends Component {
                       
                       <div className="col-lg-6 my-3">
                         <b><label>Invoice Date <span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm"  />
+                        <input className=" form-control form-control-sm" type ="date" />
                       </div>
 
                       <div className="col-lg-6 my-3">
                         <b><label>Invoice Number <span className="mandatory">*</span></label> </b>
                         <input className=" form-control form-control-sm"  />
                       </div>
+                      
+                      <div className="col-lg-6 my-2">
+                        <b><label>TransPort Name<span className="mandatory">*</span></label> </b>
+                        <select className=" form-control form-control-sm"  required >
+                          <option value="">Buyer Name</option>
+                          <option value="BUYER">BUYER</option>
+                          <option value="SELLER">SELLER</option>
+                          <option value="TRANSPORTER">TRANSPORTER</option>
+                        </select>
+                      </div>
 
+                      <div className="col-lg-6 my-2">
+                        <b><label>TransPort Remarks<span className="mandatory">*</span></label> </b>
+                        <input className=" form-control form-control-sm"  />
+                      </div>
+                      
                       <div className="col-lg-6 my-3">
                         <b><label>Invoice Qty<span className="mandatory">*</span></label> </b>
                         <input className=" form-control form-control-sm"  />
@@ -240,15 +250,7 @@ export default class Purchase extends Component {
                         <input className=" form-control form-control-sm"  />
                       </div>
 
-                      <div className="col-lg-6 my-2">
-                        <b><label>TransPort Name<span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm"  />
-                      </div>
-
-                      <div className="col-lg-6 my-2">
-                        <b><label>TransPort Remarks<span className="mandatory">*</span></label> </b>
-                        <input className=" form-control form-control-sm"  />
-                      </div>
+                     
 
                       <div className="col-lg-12 my-2">
                       <button type="submit" class="btn btn-success float-right mx-2">Add Shipment</button>
